@@ -12,10 +12,9 @@ export default class AppComponent implements OnInit {
   title = 'Melo';
   users: any;
 
-  constructor(private http: HttpClient, private accountService: AccountService) {}
+  constructor(private accountService: AccountService) {}
   // hello
   ngOnInit() {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -24,12 +23,4 @@ export default class AppComponent implements OnInit {
     this.accountService.setCurrentUser(user);
 
   };
-  getUsers() {
-    this.http.get('https://localhost:7020/api/users').subscribe(
-      (response) => {
-        this.users = response;
-      },
-      (error) => {}
-    );
-  }
 }

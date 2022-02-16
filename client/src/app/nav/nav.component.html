@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Melo-Dating</a>
-      <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="loggedIn">
+      <a class="navbar-brand" >Melo-Dating</a>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Matches</a>
+          <a class="nav-link" >Matches</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lists</a>
+          <a class="nav-link" >Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+          <a class="nav-link" >Messages</a>
         </li>
         <li class="nav-item">
           <a (click)="logout()" class="nav-link"> logout </a>
         </li>
       </ul>
 
-      <div class="dropdown" *ngIf="loggedIn" dropdown>
+      <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle> Welcome User</a>
 
         <div class="dropdown-menu" *dropdownMenu>
@@ -31,7 +31,7 @@
       </div>
 
       <form
-        *ngIf="!loggedIn"
+        *ngIf="(accountService.currentUser$ | async) === null"
         #loginForm="ngForm"
         class="d-flex"
         (ngSubmit)="login()"
