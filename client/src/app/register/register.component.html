@@ -1,7 +1,7 @@
 <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
   <h2 class="text-center text-primary">Sign up</h2>
   <hr>
-  <div class="form-group">
+  <div class="form-group mb-2">
       <!-- angular uses name property to track what is put into the input -->
       <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username">
   </div>

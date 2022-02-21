@@ -1,3 +1,4 @@
+
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -47,8 +48,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-
-                return StatusCode(500, "computer says no");
+                return StatusCode(500, ex.Message);
             }
         }
         [HttpGet("bad-request")]

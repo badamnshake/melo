@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class Seed
+    public static class Seed
     {
         public static async Task SeedUsers(DataContext ctx)
         {
-            if (await ctx.Users.AnyAsync()) return;
+            // if (await ctx.Users.AnyAsync()) return;
 
             var userData = await System.IO.File.ReadAllTextAsync("Data/UserSeedData.json");
             var users = JsonSerializer.Deserialize<List<AppUser>>(userData);
@@ -29,5 +29,6 @@ namespace API.Data
 
         }
 
+        
     }
 }
